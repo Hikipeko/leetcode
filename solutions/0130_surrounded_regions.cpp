@@ -10,12 +10,6 @@ public:
         int c;
     };
 
-    inline void helpSearch(int r, int c, vector<vector<char>> &board, vector<P> &s) {
-        if (board[r][c] == 'O') {
-            s.push_back({r, c});
-        }
-    }
-
     void solve(vector<vector<char>> &board) {
         int h = board.size(), w = board[0].size();
         for (int i = 0; i < h; i++) {
