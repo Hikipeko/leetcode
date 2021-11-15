@@ -1,4 +1,20 @@
-//
-// Created by 19791 on 11/14/2021.
-//
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+#include <queue>
+#include <numeric>
 
+using namespace std;
+
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.length() != t.length()) return false;
+        char v[26] = {0};
+        for (char c : s) v[c - 'a']++;
+        for (char c : t) v[c - 'a']--;
+        for (int i : v) if (i != 0) return false;
+        return true;
+    }
+};
