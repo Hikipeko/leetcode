@@ -2,7 +2,6 @@
 #include <unordered_map>
 #include <algorithm>
 
-// map, sliding window
 
 using namespace std;
 
