@@ -1,4 +1,4 @@
-*.txt
+CMakeLists.txt
 .idea/
 cmake-build-debug/
 谷歌高畅Leetcode刷题笔记.pdf
