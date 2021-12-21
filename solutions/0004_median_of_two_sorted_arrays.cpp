@@ -19,8 +19,8 @@ public:
         int m1 = (l1 + k / 2 - 1 < nums1.size()) ? nums1[l1 + k / 2 - 1] : INT_MAX;
         int m2 = (l2 + k / 2 - 1 < nums2.size()) ? nums2[l2 + k / 2 - 1] : INT_MAX;
         if (m1 < m2)
-            return findKth(nums1, nums2, m1, l2, k - k / 2);
+            return findKth(nums1, nums2, l1 + k/2, l2, k - k / 2);
         else
-            return findKth(nums1, nums2, l1, m2, k - k / 2);
+            return findKth(nums1, nums2, l1, l2 + k/2, k - k / 2);
     }
 };
