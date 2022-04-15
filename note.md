@@ -60,3 +60,4 @@ public:
 **Topological sorting**
 
 Iteratively remove the point that have 0 indegree.
+207 210
