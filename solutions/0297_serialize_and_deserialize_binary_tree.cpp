@@ -1,5 +1,9 @@
+// binary tree DFS / BFS
+
 #include <vector>
-#include <climits>
+#include <string>
+#include <sstream>
+
 using namespace std;
 
 struct TreeNode {
@@ -7,30 +11,42 @@ struct TreeNode {
     TreeNode *left;
     TreeNode *right;
 
-    TreeNode() : val(0), left(nullptr), right(nullptr) {}
-
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-
-    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+class Codec {
 public:
-    int max;
 
-    int maxPathSum(TreeNode* root) {
-        max = INT_MIN;
-        helpMax(root);
-        return max;
+    // Encodes a tree to a single string.
+    string serialize(TreeNode* root) {
+        ostringstream res;
+        serialize(root, res);
+        return res.str();
     }
 
-    // returns the max path starting at the root, ending at a descendent node
-    int helpMax(TreeNode* root) {
-        if (root == nullptr) return 0;
-        int l = helpMax(root->left);
-        int r = helpMax(root->right);
-        int res = l > r ? l : r;
-        if (l + r + root->val > max) max = l + r + root->val;
-        return (res + root->val > 0) ? res + root->val : 0;
+    void serialize(TreeNode* root, ostringstream& res) {
+        if (!root) {
+            res << "x ";
+        } else {
+            res << root->val << ' ';
+            serialize(root->left, res);
+            serialize(root->right, res);
+        }
+    }
+
+    // Decodes your encoded data to tree.
+    TreeNode* deserialize(string data) {
+        istringstream in(data);
+        return deserialize(in);
+    }
+
+    TreeNode* deserialize(istringstream &in) {
+        string val;
+        in >> val;
+        if (val == "x") return nullptr;
+        TreeNode* temp = new TreeNode(stoi(val));
+        temp->left = deserialize(in);
+        temp->right = deserialize(in);
+        return temp;
     }
 };
