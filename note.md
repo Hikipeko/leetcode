@@ -61,3 +61,10 @@ public:
 
 Iteratively remove the point that have 0 indegree.
 207 210
+
+
+
+# Segment Tree & Binary Indexed Tree
+
+315
+
